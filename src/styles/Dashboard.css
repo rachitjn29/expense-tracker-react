@@ -1,0 +1,205 @@
+/* ================= Dashboard ================= */
+
+.dashboard {
+    padding-bottom: 30px;
+    background: #f5f7fb;
+    height: fit-content;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 30px;
+    padding: 24px;
+}
+.dashboard-left,
+.dashboard-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ================= Total Balance ================= */
+
+.total-balance-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: .3s;
+}
+
+.balance-growth {
+    text-align: right;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ================= Income & Expense ================= */
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.income-card,
+.expense-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 22px;
+    border-radius: 18px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+
+    transition: .3s;
+}
+
+
+.income-card:hover,
+.expense-card:hover,
+.total-balance-card:hover,
+.pie-chart-card:hover,
+.bar-chart-card:hover,
+.transaction-btn:hover {
+    transform: scale(1.03);
+}
+
+.card-title {
+    font-size: 16px;
+    color: #5b6475;
+}
+
+.card-amount {
+    font-size: 42px;
+}
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, .45);
+}
+
+/* ================= Button ================= */
+
+.transaction-btn-wrapper {
+    display: flex;
+}
+
+.transaction-btn {
+    padding: 14px 22px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: #6b43e1;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.transaction-btn:hover {
+    background: #4338ca;
+}
+
+/* ================= Recent Transactions ================= */
+
+.d-recent-transactions {
+    margin: 0 25px;
+    padding: 7px 24px 0 24px;
+    padding-bottom: 0px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    backdrop-filter: blur(12px);
+    transition: .3s;
+}
+
+.d-transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-transaction-header h2 {
+    font-size: 25px;
+    color: black;
+}
+
+.d-transaction-header button {
+    font-size: 18px;
+    border: none;
+    background: none;
+    color: #4f46e5;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.d-transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.d-transaction-table th {
+    font-size: 16px;
+    background: white;
+    backdrop-filter: blur(12px);
+    padding: 14px 0;
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+.d-transaction-table td {
+    font-size: 16px;
+    color: black;
+    padding: 18px 0;
+}
+
+.income-text {
+    color: #059669 !important;
+    font-weight: 600;
+}
+
+.expense-text {
+    color: #dc2626 !important;
+    font-weight: 600;
+}
+
+/* ================= Charts ================= */
+
+.pie-chart-card,
+.bar-chart-card {
+    backdrop-filter: blur(12px);
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.pie-chart-card h2,
+.bar-chart-card h2 {
+    color: black;
+    margin-bottom: 18px;
+}
+
+.d-chart-box {
+    width:100%;
+    height:280px;
+    /* border: 2px dashed #d6dbe5; */
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}

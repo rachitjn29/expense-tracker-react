@@ -1,0 +1,144 @@
+.analytics {
+  padding: 25px;
+  background: #f5f7fb;
+  height: fit-content;
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.analytics-header h2 {
+  color: black;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.analytics-header p {
+  color: #414851;
+}
+
+.analytics-header select {
+  width: 170px;
+  height: 45px;
+  color: black;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 0 15px;
+  outline: none;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  background: white;
+  border: 1px solid #1f2937;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.summary-card h4 {
+  color: black;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.summary-card h3 {
+  color: black;
+  font-size: 28px;
+}
+
+.a-chart-box {
+  background: rgba(247, 235, 211, 0.48);
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 25px;
+  height: fit-content;
+}
+
+.a-chart-box h3 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.box {
+  background: white;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.box h3 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.left span {
+  font-size: 22px;
+}
+
+.left p {
+  color: black;
+}
+
+.category-item h4 {
+  color: black;
+}
+
+.insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.insight-card {
+  background: rgba(249, 237, 214, 0.518);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.insight-card h4 {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.insight-card p {
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+@media (max-width:768px) {
+  .analytics-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
