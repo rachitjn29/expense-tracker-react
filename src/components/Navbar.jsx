@@ -15,8 +15,10 @@ const Navbar = ({title}) => {
       <div className="flex items-center gap-4">
 
         {/* Notification */}
-        <button className="rounded-lg p-2 hover:bg-slate-100 transition">
-          <Bell className="h-6 w-6 text-white" />
+        <button 
+        onClick={()=>alert("Spend Wisely Sir!")}
+        className="rounded-lg p-2 hover:bg-slate-100 transition">
+          <Bell className="h-6 w-6" />
         </button>
 
         {/* Profile */}
@@ -26,8 +28,7 @@ const Navbar = ({title}) => {
           </div>
 
           <div>
-            <p className="text-sm font-medium text-black">User</p>
-            <p className="text-xs text-slate-500">Welcome Back</p>
+            <p className="text-xl font-medium text-black">Rachit</p>
           </div>
         </div>
       </div>

@@ -53,11 +53,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 22px;
+    padding: 20px;
     border-radius: 18px;
-
     box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
-
     transition: .3s;
 }
 
@@ -65,8 +63,6 @@
 .income-card:hover,
 .expense-card:hover,
 .total-balance-card:hover,
-.pie-chart-card:hover,
-.bar-chart-card:hover,
 .transaction-btn:hover {
     transform: scale(1.03);
 }
@@ -178,8 +174,7 @@
 
 /* ================= Charts ================= */
 
-.pie-chart-card,
-.bar-chart-card {
+.pie-chart-card{
     backdrop-filter: blur(12px);
     background: white;
     padding: 20px;
@@ -187,10 +182,9 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
 }
 
-.pie-chart-card h2,
-.bar-chart-card h2 {
+.pie-chart-card h2{
+    font-size: 24px;
     color: black;
-    margin-bottom: 18px;
 }
 
 .d-chart-box {

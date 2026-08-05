@@ -23,12 +23,11 @@ const AddTransactionModal = ({
     category: "",
     amount: "",
     date: "",
-    description: "",
   });
 
   const categories = {
     income: ["Salary", "Freelance", "Investment", "Gift"],
-    expense: ["Food", "Travel", "Shopping", "Bills", "Health"],
+    expense: ["Food", "Travel", "Shopping", "Bills", "Health","Fuel"],
   };
 
   useEffect(() => {
@@ -41,7 +40,6 @@ const AddTransactionModal = ({
         category: editingTransaction.category,
         amount: editingTransaction.amount,
         date: editingTransaction.date,
-        description: editingTransaction.description,
       });
     }
   }, [editingTransaction]);
@@ -49,7 +47,13 @@ const AddTransactionModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!type || !formData.title || !formData.category || !formData.amount || !formData.date) {
+    if (
+      !type ||
+      !formData.title ||
+      !formData.category ||
+      !formData.amount ||
+      !formData.date
+    ) {
       return alert("Please fill all the valid details");
     }
 
@@ -88,7 +92,6 @@ const AddTransactionModal = ({
         category: "",
         amount: "",
         date: "",
-        description: "",
       });
     }
   };
@@ -215,26 +218,6 @@ const AddTransactionModal = ({
               setFormData({
                 ...formData,
                 date: e.target.value,
-              })
-            }
-          />
-        </div>
-
-        {/* Description */}
-        <div className="input-group">
-          <label>
-            <NotebookPen size={18} />
-            Description
-          </label>
-
-          <textarea
-            rows={4}
-            placeholder="Write description..."
-            value={formData.description}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                description: e.target.value,
               })
             }
           />

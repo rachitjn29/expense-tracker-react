@@ -132,10 +132,10 @@ const Transactions = ({
               <option value="Freelance">Freelance</option>
               <option value="Gift">Gift</option>
               <option value="Bills">Bills</option>
-              <option value="Transport">Transport</option>
               <option value="Entertainment">Entertainment</option>
               <option value="Health">Health</option>
               <option value="Education">Education</option>
+              <option value="Fuel">Fuel</option>
               <option value="Others">Others</option>
             </select>
 

@@ -16,12 +16,6 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({ setShowModal, transactions }) => {
   const navigate = useNavigate();
-  const data = [
-    { name: "Food", value: 400 },
-    { name: "Travel", value: 300 },
-    { name: "Shopping", value: 300 },
-    { name: "Bills", value: 200 },
-  ];
 
   const expenseTransactions = transactions.filter(
     (transaction) => transaction.type === "expense",
@@ -29,8 +23,20 @@ const Dashboard = ({ setShowModal, transactions }) => {
 
   const categoryTotal = {};
 
+  expenseTransactions.forEach((item) => {
+    if (categoryTotal[item.category]) {
+      categoryTotal[item.category] += Number(item.amount);
+    } else {
+      categoryTotal[item.category] = Number(item.amount);
+    }
+  });
 
-  const COLORS = ["#4F46E5", "#22C55E", "#F97316", "#EF4444"];
+  const data = Object.keys(categoryTotal).map((category) => ({
+    name: category,
+    value: categoryTotal[category],
+  }));
+
+  const COLORS = ["#EF4444", "#4F46E5", "#22C55E", "#F97316"];
 
   console.log(transactions);
 
@@ -44,14 +50,16 @@ const Dashboard = ({ setShowModal, transactions }) => {
 
   const totalBalance = totalIncome - totalExpense;
 
+  const lastTransaction = transactions.length > 0 ? transactions[0] : null;
+
   return (
     <>
       <Sidebar />
 
-        <Navbar title="Dashboard Page" />
-        <div className="dashboard ml-72">
-          {/* main grid */}
-          <div className="dashboard-grid">
+      <Navbar title="Dashboard Page" />
+      <div className="dashboard ml-72">
+        {/* main grid */}
+        <div className="dashboard-grid">
           {/* Left */}
           <div className="dashboard-left">
             {/* Total Balance */}
@@ -65,10 +73,19 @@ const Dashboard = ({ setShowModal, transactions }) => {
               </div>
 
               <div className="balance-growth">
-                <p className="growth-month text-sm">This Month</p>
-                <h2 className="growth-amount text-3xl m-2.5">+₹5,200</h2>
-                <p className="growth-text text-green-300 font-semibold">
-                  ▲ 12% Growth
+                <h2 className="Prev-transaction text-3xl m-1.5">
+                  Recent Transaction
+                </h2>
+                <p className="l-date font-semibold">
+                  {lastTransaction ? (
+                    <>
+                      {lastTransaction.category}
+                      {lastTransaction.type === "income" ? " +" : " -"}₹
+                      {Number(lastTransaction.amount).toLocaleString("en-IN")}
+                    </>
+                  ) : (
+                    "No Transactions"
+                  )}
                 </p>
               </div>
             </div>
@@ -79,9 +96,6 @@ const Dashboard = ({ setShowModal, transactions }) => {
                 <div className="card-details">
                   <p className="card-title">Total Income</p>
                   <h2 className="card-amount">₹{totalIncome}</h2>
-                  <span className="income-status text-green-600 font-semibold">
-                    +8% this month
-                  </span>
                 </div>
                 <div className="card-icon">
                   <TrendingUp size={28} />
@@ -92,9 +106,6 @@ const Dashboard = ({ setShowModal, transactions }) => {
                 <div className="card-details">
                   <p className="card-title">Total Expense</p>
                   <h2 className="card-amount">₹{totalExpense}</h2>
-                  <span className="expense-status text-red-600 font-semibold">
-                    -3% this month
-                  </span>
                 </div>
                 <div className="card-icon">
                   <TrendingDown size={28} />
@@ -111,8 +122,7 @@ const Dashboard = ({ setShowModal, transactions }) => {
                 + Add Transaction
               </button>
             </div>
-            </div>
-            
+          </div>
 
           {/* Right Section */}
           <div className="dashboard-right">
@@ -128,6 +138,7 @@ const Dashboard = ({ setShowModal, transactions }) => {
                       nameKey="name"
                       cx="50%"
                       cy="50%"
+                      innerRadius={50}
                       outerRadius={100}
                     >
                       {data.map((entry, index) => (
@@ -158,51 +169,51 @@ const Dashboard = ({ setShowModal, transactions }) => {
               </div>
             </div>
           </div>
-          </div>
-          {/* Recent Transactions */}
-            <div className="d-recent-transactions">
-              <div className="d-transaction-header">
-                <h2>Recent Transactions</h2>
-                <button onClick={() => navigate("/transactions") }>View All</button>
-              </div>
-
-              <table className="d-transaction-table">
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Type</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {transactions.slice(0,4).map((transaction) => (
-                    <tr key={transaction.id}>
-                      <td>{transaction.category}</td>
-
-                      <td>
-                        {transaction.type === "income" ? "Income" : "Expense"}
-                      </td>
-
-                      <td>{new Date(transaction.date).toLocaleDateString()}</td>
-
-                      <td
-                        className={
-                          transaction.type === "income"
-                            ? "income-text"
-                            : "expense-text"
-                        }
-                      >
-                        {transaction.type === "income" ? "+" : "-"}₹
-                        {Number(transaction.amount).toLocaleString("en-IN")}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
         </div>
+        {/* Recent Transactions */}
+        <div className="d-recent-transactions">
+          <div className="d-transaction-header">
+            <h2>Recent Transactions</h2>
+            <button onClick={() => navigate("/transactions")}>View All</button>
+          </div>
+
+          <table className="d-transaction-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {transactions.slice(0, 4).map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{transaction.category}</td>
+
+                  <td>
+                    {transaction.type === "income" ? "Income" : "Expense"}
+                  </td>
+
+                  <td>{new Date(transaction.date).toLocaleDateString()}</td>
+
+                  <td
+                    className={
+                      transaction.type === "income"
+                        ? "income-text"
+                        : "expense-text"
+                    }
+                  >
+                    {transaction.type === "income" ? "+" : "-"}₹
+                    {Number(transaction.amount).toLocaleString("en-IN")}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
   );
 };
