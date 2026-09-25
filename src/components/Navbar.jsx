@@ -28,7 +28,7 @@ const Navbar = ({title}) => {
           </div>
 
           <div>
-            <p className="text-xl font-medium text-black">Rachit</p>
+            <p className="text-xl font-medium text-black">User</p>
           </div>
         </div>
       </div>
